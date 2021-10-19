@@ -5,4 +5,5 @@ Just want to learn/pratice Rust, so doing [Advent of Code](https://adventofcode.
 
 ## Progress
 
- - [x] Day 01 \o/
+ - [] Day 01
+    - [x] Part 01
