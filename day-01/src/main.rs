@@ -2,6 +2,7 @@ use std::fs::read_to_string;
 
 fn main() {
     let mut sum_fuel = 0;
+    let mut sum_total_fuel = 0;
     // read_to_string -> Result, so unwrap needed.
     // lines return every line.
     // Iterate over and display each item.
@@ -10,12 +11,42 @@ fn main() {
         sum_fuel += calculate(item.parse().unwrap());
     }
 
+    for item in read_to_string("input").unwrap().lines() {
+        sum_total_fuel += fuel_of_fuel(item.parse().unwrap());
+        println!("Item : {} -> {}",item, sum_total_fuel);
+    }
+
     println!("{}", sum_fuel);
+    println!("{}", sum_total_fuel);
 }
 
 fn calculate(val: i32) -> i32 {
     (val / 3) - 2
 }
+
+fn fuel_of_fuel(val: i32) -> i32 {
+    let mut total_fuel = 0;
+    let mut fuel = calculate(val);
+
+    while fuel > 0 {
+        total_fuel += fuel;
+        fuel = calculate(fuel);
+    }
+
+    total_fuel
+}
+
+// recursive, fk dat shit
+// fn fuel_of_fuel(val: i32) -> i32 {
+//     let mut total = 0;
+//     let mut fuel = calculate(val);
+//     if fuel > 0 {
+//         total += fuel;
+//         fuel_of_fuel(fuel)
+//     } else {
+//         total
+//     }
+// }
 
 #[test]
 fn ok() {
