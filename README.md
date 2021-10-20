@@ -5,7 +5,7 @@ Just want to learn/pratice Rust, so doing [Advent of Code](https://adventofcode.
 
 ## Progress
 
- - [x] Day 01  
-    - [x] Part 01  
-    - [x] Part 02 (but non recursively... :slightly_frowning_face: )
- - [ ] Day 02 
+ - :heavy_check_mark: Day 01  
+    - :heavy_check_mark: Part 01  
+    - :heavy_check_mark: Part 02 (but non recursively... :slightly_frowning_face: )
+ - :green_square: Day 02 
