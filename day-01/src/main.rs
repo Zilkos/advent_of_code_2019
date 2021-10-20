@@ -16,10 +16,11 @@ fn main() {
         println!("Item : {} -> {}",item, sum_total_fuel);
     }
 
-    println!("{}", sum_fuel);
-    println!("{}", sum_total_fuel);
+    println!("Answer part 01 : {}", sum_fuel);
+    println!("Answer part 02 : {}", sum_total_fuel);
 }
 
+// i32 ? Because Rust natively do entire division on it so no floor() required <3
 fn calculate(val: i32) -> i32 {
     (val / 3) - 2
 }
