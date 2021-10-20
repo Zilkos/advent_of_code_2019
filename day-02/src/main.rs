@@ -1,8 +1,22 @@
+use std::fs::read_to_string;
+
 fn main() {
-    println!("Hello, world!");
+    let input = read_to_string("input").unwrap();
+
+    // Split it by coma into vector
+
+    // TODO : find another way, this is FUCKIN HELL.
+    let data_to_parse: Vec<&str> = input.split(',').collect();
+    let mut data: Vec<usize> = Vec::new();
+
+    for item in data_to_parse {
+        data.push(item.parse().unwrap());
+    }
+
+    println!("{:?}", &data);
 }
 
-fn process(program: Vec<usize>) -> Vec<usize> {
+fn process(mut program: Vec<usize>) -> Vec<usize> {
     // program is a collection of opcode
     // an opcode is a 4 index pattern, so jump 4 by 4
     // [    0    ,   1,     2,       3]
@@ -37,7 +51,7 @@ fn process(program: Vec<usize>) -> Vec<usize> {
 #[test]
 fn process_program() {
     assert_eq!(vec![2,0,0,0,99], process(vec![1,0,0,0,99]));
-    assert_eq!(vec![2,3,0,6,99], process(vec![2,3,0,3,99]));
-    assert_eq!(vec![2,4,4,5,99,0], process(vec![2,4,4,5,99,9801]));
-    assert_eq!(vec![1,1,1,4,99,5,6,0,99], process(vec![30,1,1,4,2,5,6,0,99]));
+    // assert_eq!(vec![2,3,0,6,99], process(vec![2,3,0,3,99]));
+    // assert_eq!(vec![2,4,4,5,99,0], process(vec![2,4,4,5,99,9801]));
+    // assert_eq!(vec![1,1,1,4,99,5,6,0,99], process(vec![30,1,1,4,2,5,6,0,99]));
 }
