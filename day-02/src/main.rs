@@ -20,9 +20,34 @@ fn main() {
     data[2] = 2;
 
     // What value is left at position 0 after the program halts?
-    let result = process(data);
+    let result = process(data.clone());
 
     println!("{}", result[0]);
+
+
+    /********************
+            PART 2
+     ********************/
+
+    // 1st == noun
+    // 2nd == verb
+    // Find the input noun and verb that cause the program to produce the output 19690720. What is 100 * noun + verb?
+    // (For example, if noun=12 and verb=2, the answer would be 1202.)
+
+
+    // bruteforce all possibilities between 1 and 99 for noun and verb (not really optimized, but limits are in the statement, so why not)
+    'outer:for noun in 1..=99 {
+        'inner:for verb in 1..=99 {
+            data[1] = noun;
+            data[2] = verb;
+            let result_p2 = process(data.clone());
+            // println!("{}", result_p2[0]);
+            if result_p2[0] == 19690720 {
+                println!("Result : noun -> {} - verb -> {}", noun, verb);
+                break 'outer; // weird stuff but practical and clear
+            }
+        }
+    }
 }
 
 fn process(mut program: Vec<usize>) -> Vec<usize> {
