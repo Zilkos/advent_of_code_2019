@@ -4,16 +4,25 @@ fn main() {
     let input = read_to_string("input").unwrap();
 
     // Split it by coma into vector
-
     // TODO : find another way, this is FUCKIN HELL.
-    let data_to_parse: Vec<&str> = input.split(',').collect();
-    let mut data: Vec<usize> = Vec::new();
+    // let data_to_parse: Vec<&str> = input.split(',').collect();
+    // let mut data: Vec<usize> = Vec::new();
+    //
+    // for item in data_to_parse {
+    //     data.push(item.parse().unwrap());
+    // }
+    let mut data: Vec<usize> = input.split(',').map(|string| {
+        let item: usize = string.parse().unwrap();
+        item
+    }).collect();
 
-    for item in data_to_parse {
-        data.push(item.parse().unwrap());
-    }
+    data[1] = 12;
+    data[2] = 2;
 
-    println!("{:?}", &data);
+    // What value is left at position 0 after the program halts?
+    let result = process(data);
+
+    println!("{}", result[0]);
 }
 
 fn process(mut program: Vec<usize>) -> Vec<usize> {
